@@ -4,7 +4,7 @@
 #import time
 #from time import sleep
 #import random
-#import csv
+import csv
 
 #INPUT
 #button=8
@@ -36,21 +36,10 @@
 #        condition=False
 #        grovepi.digitalWrite(redLed,0)
 #        print("Your reaction time is "+str(time)+"ms")
-file = open('memory_level.txt')
-levels = file.readlines()
-level1 = levels[0]
-level2 = levels[1]
-level3 = levels[2]
-level4 = levels[3]
-level5 = levels[4]
 
-print(level1)
-print(level2)
-print(level3)
-print(level4)
-print(level5)
-print(len(level1))
-print(len(level2))
-print(len(level3))
-print(len(level4))
-print(len(level5))
+
+with open('memory_level.csv' , 'r', encoding='utf-8-sig') as csvfile:
+    levels = csv.reader(csvfile)
+    next(levels)
+    for line in levels:
+        print(line[0])
