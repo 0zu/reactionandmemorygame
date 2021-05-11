@@ -38,8 +38,8 @@ import csv
 #        print("Your reaction time is "+str(time)+"ms")
 
 
-with open('memory_level.csv' , 'r', encoding='utf-8-sig') as csvfile:
-    levels = csv.reader(csvfile)
+with open('memory_level.csv', 'r', encoding='utf-8-sig') as csvfile:
+    levels = csv.reader(csvfile, delimiter=';')
     next(levels)
     for line in levels:
-        print(line[0])
+        print(line[1])
