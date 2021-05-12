@@ -69,4 +69,19 @@ for i in range(1,3):
             grovepi.digitalWrite(buzzer,0)
             print("Your reaction time is "+str(time)+"ms")
             #enregistrer résultat+ écrire dans csv
+#MEMORY GAME
+print("Vous allez commencer le jeu de mémoire, appuyer sur ENTER dès que vous êtes prêt")
+level="rggbg"
+nbrOfLight=str(len(level))
+print("Il y a eu "+nbrOfLight+" lumières qui se sont allumés")
+user_guess=input("Entrez dans le shell ce que vous avez vu")
 
+#Compare level and userinput
+level="rrgbg"
+user="rgrbr"
+print(level)
+print(user)
+splitedlevel=list(level)
+print(splitedlevel)
+spliteduser=list(user)
+print(spliteduser)
