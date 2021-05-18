@@ -1,6 +1,7 @@
 %Lecture des fichiers
-
-%Meilleures score
+data= readtable('g13_data.csv');
+%Nombre de joueurs
+numberOfPlayer=height(data);
 
 %Scores moyen
 
