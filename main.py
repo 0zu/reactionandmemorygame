@@ -146,9 +146,9 @@ for i in range(1,6): #Il y a 5 niveaux
     sequence=levels[i-1] #Récupération du niveau à jouer
     for color in sequence:  #Lecture de la séquence à allumer
         grovepi.digitalWrite(charToLed[color],1)    #Allumage à l'aide du dictionnaire
-        sleep(1.5)
+        sleep(2.2)
         grovepi.digitalWrite(charToLed[color],0)    #Déclenchement à l'aide du dicionnaire
-        sleep(0.5)
+        sleep(0.8)
     print(f"Entrez la séquence de lumières rgb, il y a {len(sequence)} lumières")
     grove_rgb_lcd.setText_norefresh(f"Entrez la séquence de lumières rgb, il y a {len(sequence)} lumières")  #Affichage sur LCD
 
