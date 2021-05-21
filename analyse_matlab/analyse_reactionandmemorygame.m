@@ -1,18 +1,16 @@
 %Lecture des fichiers
-data= readtable('g13_data.csv');
+rawData= readtable('g13_data.csv');
+data=table2cell(rawData);
 %Nombre de joueurs
 numberOfPlayer=height(data);
 
-lightScore1 = data(:,3);
-lightScore2 = data(:,4);
-lightScore3 = data(:,5);
-lightScore1=cell2mat(table2cell(lightScore1));
-lightScore2=cell2mat(table2cell(lightScore2));
-lightScore3=cell2mat(table2cell(lightScore3));
+lightScore1=cell2mat(data(:,3));
+lightScore2=cell2mat(data(:,4));
+lightScore3=cell2mat(data(:,5));
 
-soundScore1=cell2mat(table2cell(data(:,6)));
-soundScore2=cell2mat(table2cell(data(:,7)));
-soundScore3=cell2mat(table2cell(data(:,8)));
+soundScore1=cell2mat(data(:,6));
+soundScore2=cell2mat(data(:,7));
+soundScore3=cell2mat(data(:,8));
 
 memoryWrongAns=data(:,9);
 
@@ -33,5 +31,7 @@ averageSoundScore=averageSoundScore/3*1000; %En ms
 %Best score
 bestLightScore=zeros(numberOfPlayer,1);
 for i=1:numberOfPlayer
-    bestLightScore(i,1)=max(cell2mat(table2cell(data(i,3:5))))*1000;
+    bestLightScore(i,1)=max(cell2mat(data(i,3:5)))*1000;
 end
+clear lightScore*
+clear soundScore*
