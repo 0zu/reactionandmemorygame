@@ -40,36 +40,14 @@ for i=1:numberOfPlayer
     bestSoundScore(i,1)=min(cell2mat(data(i,6:8)))*1000;
 end
 
-%Plots
-figure('WindowState','maximized')
-tiledlayout(2,2); %4 graphes
-%
-bestLightScore=nexttile;
-histogram(bestLightScore,0:25:500)
-title("bestLightScore")
+histogram(bestLightScore,5)
+title("Comparaison: best light score, best sound score")
 xlabel('Reaction Time in ms')
 ylabel('Number of players')
-
-%
-averageLightScore = nexttile;
-histogram(averageLightScore,0:25:500)
-title("averageLightScore")
-xlabel('Reaction Time in ms')
-ylabel('Number of players')
-
-%
-bestSoundScore = nexttile;
-histogram(bestSoundScore,0:25:500)
-title("bestSoundScore")
-xlabel('Reaction Time in ms')
-ylabel('Number of players')
-
-%
-averageSoundScore = nexttile;
-histogram(averageSoundScore,0:25:500)
-title("averageSoundScore")
-xlabel('Reaction Time in ms')
-ylabel('Number of players')
+legend('Light score','Sound score')
+hold on
+%bestSoundScore = nexttile;
+histogram(bestSoundScore,5)
 
 clear lightScore*
 clear soundScore*
