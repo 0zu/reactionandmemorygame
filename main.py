@@ -34,6 +34,12 @@ charToLed={
     'v':greenLed,   #Permet à l'utilisateur de rentrer soit v ou g pour le jeu de mémoire
 }
 
+pannelColors={
+    'r': [255,0,0],
+    'g': [0,255,0],
+    'b': [0,0,255]
+}
+
 #ENTREE AGE
 print("Quel est votre âge?")
 grove_rgb_lcd.setText_norefresh("Quel est votre âge?")  #Affichage sur LCD
@@ -129,7 +135,8 @@ with open('memory_level.csv', 'r') as csvfile:  #Lecture du fichier de niveau
     next(csvfiles)
     for line in csvfiles:
         levels.append(str(line[1]).lower()) #Conversion en mininuscule et enregistrement des niveaux dans la variable
-
+grove_rgb_lcd.setRGB(0,0,0)
+sleep(0.5)
 for i in range(1,6): #Il y a 5 niveaux
 
     #Genre du joueur
@@ -146,11 +153,18 @@ for i in range(1,6): #Il y a 5 niveaux
     sequence=levels[i-1] #Récupération du niveau à jouer
     for color in sequence:  #Lecture de la séquence à allumer
         grovepi.digitalWrite(charToLed[color],1)    #Allumage à l'aide du dictionnaire
-        sleep(2.2)
-        grovepi.digitalWrite(charToLed[color],0)    #Déclenchement à l'aide du dicionnaire
-        sleep(0.8)
+        rgb=pannelColors[color]
+        grove_rgb_lcd.setRGB(rgb[0],rgb[1],rgb[2])
+        sleep(1.3)
+        grovepi.digitalWrite(charToLed[color],0)
+        grove_rgb_lcd.setRGB(0,0,0)
+        #Déclenchement à l'aide du dicionnaire
+        sleep(0.7)
     print(f"Entrez la séquence de lumières rgb, il y a {len(sequence)} lumières")
     grove_rgb_lcd.setText_norefresh(f"Entrez la séquence de lumières rgb, il y a {len(sequence)} lumières")  #Affichage sur LCD
+    grovepi.digitalWrite(buzzer,1)
+    sleep(0.1)
+    grovepi.digitalWrite(buzzer,0)
 
     guess=str(input()).lower()  #Conversion en miniscule de la réponse de l'utilisateur
 
