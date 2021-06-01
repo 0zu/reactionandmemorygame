@@ -12,7 +12,9 @@ soundScore1=cell2mat(data(:,6));    %Score 1 son
 soundScore2=cell2mat(data(:,7));    %Score 2 son
 soundScore3=cell2mat(data(:,8));    %Score 3 son
 
-memoryWrongAns=data(:,9);   %Nombre d'erreurs
+memoryWrongAns=cell2mat(data(:,9));   %Nombre d'erreurs
+memoryRightAns=32-memoryWrongAns; %Nombre justes
+rightPourcentage=memoryRightAns/32*100; %Pourcentage juste
 
 averageLightScore=zeros(numberOfPlayer,1);
 %Average reaction time LIGHTS
@@ -44,10 +46,17 @@ histogram(bestLightScore,5)
 title("Comparaison: best light score, best sound score")
 xlabel('Reaction Time in ms')
 ylabel('Number of players')
-legend('Light score','Sound score')
 hold on
-%bestSoundScore = nexttile;
 histogram(bestSoundScore,5)
+legend('Light score','Sound score')
+
+% histogram(averageLightScore,5)
+% title("Comparaison: mean light score, mean sound score")
+% xlabel('Reaction Time in ms')
+% ylabel('Number of players')
+% hold on
+% histogram(averageSoundScore,5)
+% legend('Light score','Sound score')
 
 clear lightScore*
 clear soundScore*
