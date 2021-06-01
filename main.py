@@ -126,7 +126,6 @@ for i in range(1,4):    #Le jeu se fait 3 fois
     grove_rgb_lcd.setText_norefresh("Votre temps de réaction est de "+str(end-start)+" sec")  #Affichage sur LCD
     while grovepi.digitalRead(button):
         sleep(0.001) #Vérifie que l'utilisateur ait laché le bouton pour recommencer le jeu
-
 #MEMORY GAME
 wrongAns=0  #Initializing variable
 levels=[]   #Initializing variable
@@ -146,6 +145,8 @@ for i in range(1,6): #Il y a 5 niveaux
 
     print(f"Appuyez sur le bouton dès que vous êtes {readyString}")
     grove_rgb_lcd.setText_norefresh(f"Appuyez sur le bouton dès que vous êtes {readyString}")  #Affichage sur LCD
+    sleep(1)
+    grove_rgb_lcd.setText_norefresh("")  #Affichage sur LCD
     while not grovepi.digitalRead(button):
         sleep(0.001) #Attend avant d'executer la suite
     while grovepi.digitalRead(button):

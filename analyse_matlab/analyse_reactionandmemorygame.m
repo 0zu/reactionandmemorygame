@@ -42,14 +42,26 @@ for i=1:numberOfPlayer
     bestSoundScore(i,1)=min(cell2mat(data(i,6:8)))*1000;
 end
 
-histogram(bestLightScore,5)
-title("Comparaison: best light score, best sound score")
-xlabel('Reaction Time in ms')
+histogram(rightPourcentage,7)
+xlabel('Percentage of correct answers')
 ylabel('Number of players')
-hold on
-histogram(bestSoundScore,5)
-legend('Light score','Sound score')
+yticks(0:5);
 
+% tiledlayout(2,1) 
+% % Top plot
+% nexttile
+% histogram(bestLightScore,5)
+% title("Comparaison: best light score, best sound score")
+% xlabel('Reaction Time in ms')
+% ylabel('Number of players')
+% hold on
+% histogram(bestSoundScore,5)
+% legend('Light score','Sound score')
+% hold on
+% plot(ks1);
+
+% % Bottom plot
+% nexttile
 % histogram(averageLightScore,5)
 % title("Comparaison: mean light score, mean sound score")
 % xlabel('Reaction Time in ms')
